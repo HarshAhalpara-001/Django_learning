@@ -1,5 +1,5 @@
 """
-URL configuration for View_URLs project.
+URL configuration for Dynamic_URL project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -16,10 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from URL.views import index,hello
+from Dynamic_add.views import add
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',index),
-    path('hello/<str:name>',hello),
+    path("admin/", admin.site.urls),
+    path("add/<int:a>/<int:b>/",add)
 ]
