@@ -1,3 +1,4 @@
+{% extends 'movie/_base.html' %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +7,16 @@
     <title>Document</title>
   </head>
   <body>
+    {% block content %}
     <h1>Hello to favmaovies</h1>
-    {{movie}}
+    {% if movie %}
+    <ul>
+      {% for i in movie %}
+      <li>{{i}}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>The data is Unavaliable</p>
+    {% endif %} {% endblock %}
   </body>
 </html>
