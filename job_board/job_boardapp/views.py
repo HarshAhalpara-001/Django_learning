@@ -7,3 +7,5 @@ def home(request):
         'job' : active
     }
     return render(request, 'job_boardapp/index.html',context)
+def jobno(request,k):
+    return HttpResponse(f" the title of job id is :{JobPosting.objects.get(id=k) or print('Null')}")

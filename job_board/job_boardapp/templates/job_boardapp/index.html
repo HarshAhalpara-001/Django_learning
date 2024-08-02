@@ -1,3 +1,4 @@
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +10,7 @@
     {% for i in job %}
     <h6>
       job title is :{{i.title}} and description {{i.description}} and company
-      {{i.company}} and salary :{{i.salary}}
+      {{i.company}} and salary :{{i.salary | intcomma }}
     </h6>
     {% endfor %}
   </body>
