@@ -2,5 +2,11 @@
 <html>
   {% block content %}
   <h1>the page is for showing latest movies to you.</h1>
+  <img
+    style="width: 100px"
+    {%load static %}
+    src="{% static 'movie/1.png' %}"
+    alt="spiderman image"
+  />
   {% endblock %}
 </html>
