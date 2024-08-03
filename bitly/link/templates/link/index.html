@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+      <h1 class="text-3xl font-bold mb-4">The URL Shortener</h1>
+      <p class="text-gray-700 mb-6">
+        Enter the link, and we will provide a shorter link and the number of
+        clicks to know the traffic.
+      </p>
+
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <form action="{% url 'add-link' %}" method="post">
+          {% csrf_token %}
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="url">
+            URL
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="url"
+            type="text"
+            placeholder="Enter your URL here"
+          />
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="url">
+            Name
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="name"
+            type="text"
+            placeholder="Enter your URL name here"
+          />
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+            type="submit"
+            onclick=""
+          >
+            Shorten
+          </button>
+        </form>
+      </div>
+
+      <div class="mt-8">
+        <h2 class="text-2xl font-semibold mb-4">Shortened Links</h2>
+        {% for i in link %}
+        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+          <p class="text-gray-800 font-medium">{{ i.name }}</p>
+          <p class="text-blue-500"><a href="{{ i.url }}">{{ i.url }}</a></p>
+          <a href="{% url 'root-link' i.slug  %}" target="_blank">
+            <p>open/{{ i.slug }}</p>
+          </a>
+          <p class="text-gray-600">Clicks: {{ i.clicks }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
