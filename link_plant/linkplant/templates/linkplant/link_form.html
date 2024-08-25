@@ -1,0 +1,23 @@
+{% extends 'linkplant/_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% block content %}
+    <h1 class="text-4xl">Link Form</h1>
+    <hr class="my-4" />
+    <form action="" method="POST">
+      {% csrf_token %} {{ form }}
+      <input
+        type="submit"
+        value="Save Link"
+        class="px-6 py-3 bg-blue-200 hover:cursor-pointer hover:bg-blue-300"
+      />
+    </form>
+    {% endblock %}
+  </body>
+</html>
